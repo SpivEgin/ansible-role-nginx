@@ -1,0 +1,22 @@
+---
+- name: Remove default configuration
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{nginx_sites_available_dir}}/default"
+    - "{{nginx_sites_enabled_dir}}/default"
+    - "{{nginx_conf_dir}}/conf.d/default.conf"
+
+- name: Copy nginx configuration
+  template:
+    src: nginx.conf.j2
+    dest: "{{ nginx_conf_file }}"
+    backup: yes
+
+- name: Copy site configuration file
+  template:
+    src: nginx.site.j2
+    dest: "{{ nginx_sites_available_dir }}/{{ item }}"
+    backup: yes
+  with_items: "{{ nginx_sites }}"

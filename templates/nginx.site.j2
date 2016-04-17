@@ -1,0 +1,7 @@
+# {{ ansible_managed }}
+
+server {
+    {% for key, value in item %}
+    {{ key }} {{ value }};
+    {% endfor %}
+}
