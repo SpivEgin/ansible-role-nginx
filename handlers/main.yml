@@ -1,7 +1,7 @@
 ---
 - name: Reload Nginx
   service:
-    name: {{ nginx_service_name }}
+    name: "{{ nginx_service_name }}"
     state: reloaded
     enabled: yes
 
