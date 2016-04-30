@@ -12,7 +12,6 @@ nginx_sites_enabled: []
 
 nginx_conf:
   user: "{{ nginx_user }}"
-  group: "{{ nginx_group }}"
   worker_processes: 4
   pid: /run/nginx.pid
 

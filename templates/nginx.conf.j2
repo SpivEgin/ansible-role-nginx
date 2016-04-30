@@ -12,9 +12,9 @@ events {
 
 http {
 {% for key, value in nginx_http.iteritems() | sort %}
-	{{ key }} {{ value }};
+    {{ key }} {{ value }};
 {% endfor %}
 
-	include /etc/nginx/conf.d/*.conf;
-	include /etc/nginx/sites-enabled/*;
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
 }
