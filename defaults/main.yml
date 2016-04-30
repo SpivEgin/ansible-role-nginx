@@ -7,9 +7,11 @@ nginx_conf_dir: /etc/nginx
 nginx_sites_enabled_dir: "{{ nginx_conf_dir }}/sites-enabled"
 nginx_sites_available_dir: "{{ nginx_conf_dir }}/sites-available"
 nginx_service_name: nginx
+nginx_binary_name: nginx
 
 nginx_conf:
   user: "{{ nginx_user }}"
+  group: "{{ nginx_group }}"
   worker_processes: 4
   pid: /run/nginx.pid
 
@@ -31,9 +33,4 @@ nginx_http:
   gzip: on
   gzip_disable: "msie6"
 
-nginx_sites:
-  letsencrypt:
-    listen: 80
-  matteoruina.com:
-    listen: 80
-    server_name: matteoruina.com
+nginx_sites: {}

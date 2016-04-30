@@ -8,30 +8,25 @@ ansible-galaxy install maruina.nginx
 ```
 
 ## Usage
+Override every parameters that you need to change.
+
 ```yaml
-system_groups:
-  - name: docker
-    system: no
-  - name: foo
-    system: yes
-
-system_groups_removed:
-  - bar
-  - another_group
-
-system_users:
-  - name: alice
-    groups: docker, foo
-    authorized:
-      - ssh-rsa PUBLIC-KEY
-      - ssh-rsa ANOTHER-PUBLIC-KEY
-  - name: bob
-    authorized:
-      - ssh-rsa PUBLIC-KEY
-
-system_users_removed:
-    - harvey
-    - mike
+nginx_sites:
+  my_blog:
+    - listen 80
+    - root /var/www/my_blog
+    - server_name www.myblog.com
+    - location / {
+        option value;
+      }
+  my_second_website:
+    - listen 81
+    - root /var/www/another_root
+    - server_name samename.com
+    - location / {
+        autoindex on;
+      }
+    - another nginx option
 ```
 
 ## Example Playbook

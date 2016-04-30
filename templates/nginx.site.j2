@@ -1,7 +1,16 @@
 # {{ ansible_managed }}
 
 server {
-    {% for key, value in item %}
-    {{ key }} {{ value }};
-    {% endfor %}
+{% for v in nginx_sites[item] %}
+{% if v.find('\n') != -1 %}
+  {{v.replace("\n","\n   ")}}
+{% else %}
+  {% if v != "" %}{{ v.replace(";",";\n   ").replace(" {"," {\n   ").replace(" }"," \n  }\n") }}{% if v.find('{') == -1 %};
+{% endif %}{% endif %}{% endif %}
+
+{% endfor %}
+{% if nginx_status_handler_enabled %}
+{% include 'includes/site-nginx_status.j2' %}
+{% endif %}
+
 }

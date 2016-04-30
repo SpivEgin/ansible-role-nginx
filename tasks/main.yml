@@ -1,3 +1,10 @@
 ---
 - include: install.yml
+  tags:
+    - nginx
+    - install
+
 - include: configure.yml
+  tags:
+    - nginx
+    - configure
