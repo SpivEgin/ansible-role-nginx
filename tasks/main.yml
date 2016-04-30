@@ -8,3 +8,8 @@
   tags:
     - nginx
     - configure
+
+- include: validate.yml
+  tags:
+    - nginx
+    - validate
