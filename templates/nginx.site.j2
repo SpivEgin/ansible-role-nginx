@@ -9,8 +9,4 @@ server {
 {% endif %}{% endif %}{% endif %}
 
 {% endfor %}
-{% if nginx_status_handler_enabled %}
-{% include 'includes/site-nginx_status.j2' %}
-{% endif %}
-
 }
