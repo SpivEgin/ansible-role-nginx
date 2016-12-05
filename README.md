@@ -11,6 +11,10 @@ ansible-galaxy install maruina.nginx
 Override every parameters that you need to change.
 
 ```yaml
+nginx_sites_available:
+  - my_blog
+nginx_sites_enabled:
+  - my_blog
 nginx_sites:
   my_blog:
     - listen 80
